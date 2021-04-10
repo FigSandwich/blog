@@ -29,17 +29,25 @@ public class MainController {
 	@RequestMapping(path = "/write", method = RequestMethod.POST)
 	public String writeMsg(@ModelAttribute BlogVO blogVo) {
 
-		Map<String, String> msgMap = new HashMap<String, String>();
+		if (blogVo.checkNull().equals("0")) {
+			Map<String, String> msgMap = new HashMap<String, String>();
 
-		System.out.print(blogVo.getName());
+			msgMap.put("NAME", blogVo.getName());
+			msgMap.put("PW", blogVo.getPw());
+			msgMap.put("PHONE", blogVo.getPhone());
+			msgMap.put("MESSAGE", blogVo.getMessage());
+			blogService.writeMsg(msgMap);
+			return "thymeleaf/index";
 
-		msgMap.put("NAME", blogVo.getName());
-		msgMap.put("PW", blogVo.getPw());
-		msgMap.put("PHONE", blogVo.getPhone());
-		msgMap.put("MESSAGE", blogVo.getMessage());
+		} else if (blogVo.checkNull().equals("1")) {
+			System.out.println("null");
+			return "thymeleaf/index";
+		} else {
+			System.out.println("null");
+			return "thymeleaf/index";
 
-		blogService.writeMsg(msgMap);
-		return "thymeleaf/index";
+		}
+
 	}
 
 	@RequestMapping("/msgtest")

@@ -15,6 +15,7 @@ public class BlogService {
 	public String writeMsg(Map<String, String> msgMap) {
 		
 		
+		
 		return blogMapper.writeMsg(msgMap);
 		// TODO Auto-generated method stub
 		
