@@ -10,7 +10,7 @@ $(function () {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
             var name = $("input#name").val();
-            var email = $("input#email").val();
+            var email = $("input#pw").val();
             var phone = $("input#phone").val();
             var message = $("textarea#message").val();
             var firstName = name; // For Success/Failure Message
@@ -21,12 +21,12 @@ $(function () {
             $this = $("#sendMessageButton");
             $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
             $.ajax({
-                url: "/assets/mail/contact_me.php",
+                url: "/write",
                 type: "POST",
                 data: {
                     name: name,
                     phone: phone,
-                    email: email,
+                    pw: email,
                     message: message,
                 },
                 cache: false,
@@ -57,7 +57,7 @@ $(function () {
                         $("<strong>").text(
                             "Sorry " +
                                 firstName +
-                                ", it seems that my mail server is not responding. Please try again later!"
+                                ", it seems that my server is not responding. Please try again later!"
                         )
                     );
                     $("#success > .alert-danger").append("</div>");

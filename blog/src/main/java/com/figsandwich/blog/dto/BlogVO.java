@@ -12,4 +12,3 @@ public class BlogVO {
 	private String phone;
 	private String Message;
 }
-
