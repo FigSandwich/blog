@@ -6,11 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BlogVO {
-
-	String id;
-	String pw;
-	String nick;
-	String title;
-	String content;
-
+	private String name;
+	private String pw;
+	// String email;
+	private String phone;
+	private String Message;
 }
+
