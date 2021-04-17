@@ -1,16 +1,14 @@
 package com.figsandwich.blog.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.figsandwich.blog.dto.BlogVO;
 import com.figsandwich.blog.service.BlogService;
@@ -22,7 +20,9 @@ public class MainController {
 	BlogService blogService;
 
 	@RequestMapping("/")
-	public String MainPage() {
+	public String MainPage(Model model) {
+		
+		model.addAttribute("list",blogService.viewMessage());
 		return "thymeleaf/index";
 	}
 
@@ -49,20 +49,32 @@ public class MainController {
 		}
 
 	}
+	
+	
+	@RequestMapping("/list")
+	public String msgList(Model model) {
+		model.addAttribute("list",blogService.viewMessage());		
+		return "thymeleaf/list";
+		
+	}
 
 	@RequestMapping("/msgtest")
-	public String TestPage() {
+	public String TestPage(Model model) {				
+		//model.addAttribute("list",blogService.viewMessage());		
+
 		return "thymeleaf/test";
 	}
 
-	@RequestMapping("/test")
-	public ModelAndView test() throws Exception {
-		ModelAndView mav = new ModelAndView("test");
-		mav.addObject("name", "jhpark");
-		List<String> testList = new ArrayList<String>();
-		testList.add("a");
-		mav.addObject("list", testList);
-		return mav;
-	}
+	
+	
+
+
+
+	/*
+	 * @RequestMapping("/test") public ModelAndView test() throws Exception {
+	 * ModelAndView mav = new ModelAndView("test"); mav.addObject("name", "jhpark");
+	 * List<String> testList = new ArrayList<String>(); testList.add("a");
+	 * mav.addObject("list", testList); return mav; }
+	 */
 
 }

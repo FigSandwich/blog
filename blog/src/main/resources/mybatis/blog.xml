@@ -12,4 +12,11 @@
 		VALUES(#{NAME},#{PW},#{PHONE},#{MESSAGE},NOW())
 	</select>
 
+	<select id="viewMessage" resultType="BlogVO">
+	SELECT * 
+	FROM TB_MESSAGE
+	</select>
+
+
+
 </mapper>
