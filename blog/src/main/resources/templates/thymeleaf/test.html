@@ -1,0 +1,64 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Hello thymeleaf</title>
+</head>
+<body>
+	<h1>Hello thymeleaf</h1>
+	<!-- 
+	<h2>
+	
+		name = <span th:text="${testModel.name}"></span>
+	</h2>
+	<h3>
+		id = <span th:text="${testModel.pw}"></span>
+	</h3>
+	<h3>
+		id = <span th:text="${testModel.phone}"></span>
+	</h3>
+	<h3>
+		id = <span th:text="${testModel.message}"></span>
+	</h3>
+	
+	 -->
+	
+	
+	<table>
+                <thead>
+                <tr>
+                  <th>NAME</th>
+                  <th>PW</th>
+                  <th>PHONE</th>
+                  <th>MESSAGE</th>
+                </tr>
+                </thead>
+                <tbody>
+              		<tr th:each="blogVo : ${list}">
+	                  <td th:text="${blogVo.name}">NAME</td>
+	                  <td th:text="${blogVo.pw}">PW</td>
+	                  <td th:text="${blogVo.phone}">PHONE</td>
+	                  <td th:text="${blogVo.message}">MESSAGE</td>
+	                 
+	                 
+	                  
+	                </tr>
+                </tbody>
+                
+                
+                <!--  <tbody>
+              		<tr th:each="blogVO : ${list}">
+	                  <td th:text="${boardVO.bno}">BNO</td>
+	                  <td><a th:href="@{/samplehome/board/read(bno=${boardVO.bno})}" th:text="${boardVO.title}">TITLE</a></td>
+	                  <td th:text="${boardVO.writer}">WRITER</td>
+	                  <td th:text="${#dates.format(boardVO.regdate, 'yyyy-MM-dd HH:mm')}">REGDATE</td>
+	                  <td th:text="${boardVO.viewcnt}">VIEWCNT</td>
+	                </tr>
+                </tbody> -->
+               
+              </table>
+	
+	
+	
+</body>
+</html>
+
