@@ -3,12 +3,15 @@ package com.figsandwich.blog.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.figsandwich.blog.dto.BlogVO;
 import com.figsandwich.blog.service.BlogService;
@@ -19,14 +22,14 @@ public class MainController {
 	@Autowired
 	BlogService blogService;
 
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String MainPage(Model model) {
-		
-		model.addAttribute("list",blogService.viewMessage());
+
+		model.addAttribute("list", blogService.viewMessage());
 		return "thymeleaf/index";
 	}
 
-	@RequestMapping(path = "/write", method = RequestMethod.POST)
+	@PostMapping(path = "/write")
 	public String writeMsg(@ModelAttribute BlogVO blogVo) {
 
 		if (blogVo.checkNull().equals("0")) {
@@ -40,36 +43,33 @@ public class MainController {
 			return "thymeleaf/index";
 
 		} else if (blogVo.checkNull().equals("1")) {
-			System.out.println("null");
 			return "thymeleaf/index";
 		} else {
-			System.out.println("null");
 			return "thymeleaf/index";
 
 		}
 
 	}
-	
-	
-	@RequestMapping("/list")
-	public String msgList(Model model) {
-		model.addAttribute("list",blogService.viewMessage());		
-		return "thymeleaf/list";
-		
-	}
 
-	@RequestMapping("/msgtest")
-	public String TestPage(Model model) {				
-		//model.addAttribute("list",blogService.viewMessage());		
+
+
+	@GetMapping("/msgtest")
+	public String TestPage(Model model) {
+		// model.addAttribute("list",blogService.viewMessage());
+		model.addAttribute("list", blogService.viewMessage());
 
 		return "thymeleaf/test";
 	}
-
+	
+	@GetMapping("/delete/{mno}")
+	public String deletePage(HttpServletRequest request,
+			@PathVariable(name = "mno", required = true) int mno){		
+		blogService.delMsg(mno);
+		return "redirect:/";
+	}
 	
 	
-
-
-
+	
 	/*
 	 * @RequestMapping("/test") public ModelAndView test() throws Exception {
 	 * ModelAndView mav = new ModelAndView("test"); mav.addObject("name", "jhpark");

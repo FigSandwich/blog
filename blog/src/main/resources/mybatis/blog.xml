@@ -13,8 +13,12 @@
 	</select>
 
 	<select id="viewMessage" resultType="BlogVO">
-	SELECT NAME,PHONE,MESSAGE 
-	FROM TB_MESSAGE
+		SELECT MNO,NAME,PHONE,MESSAGE
+		FROM TB_MESSAGE
+	</select>
+
+	<select id="delMsg" parameterType="int">
+		DELETE FROM TB_MESSAGE WHERE MNO=#{MNO}
 	</select>
 
 

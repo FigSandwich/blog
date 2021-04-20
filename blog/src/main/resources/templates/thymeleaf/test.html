@@ -26,6 +26,7 @@
 	<table>
                 <thead>
                 <tr>
+                <th>MNO</th>
                   <th>NAME</th>
                   <th>PW</th>
                   <th>PHONE</th>
@@ -34,12 +35,14 @@
                 </thead>
                 <tbody>
               		<tr th:each="blogVo : ${list}">
+              		<td th:text="${blogVo.mno}">MNO</td>
 	                  <td th:text="${blogVo.name}">NAME</td>
 	                  <td th:text="${blogVo.pw}">PW</td>
 	                  <td th:text="${blogVo.phone}">PHONE</td>
 	                  <td th:text="${blogVo.message}">MESSAGE</td>
+	                  <td> <a th:href="'/delete/'+${blogVo.mno}">삭제</a></td>
 	                 
-	                 
+
 	                  
 	                </tr>
                 </tbody>

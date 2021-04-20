@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BlogVO {
+	private int mno;
 	private String name;
 	private String pw;
 	// String email;

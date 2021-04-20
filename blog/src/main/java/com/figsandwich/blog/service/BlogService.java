@@ -26,5 +26,9 @@ public class BlogService {
 		// TODO Auto-generated method stub
 		return blogMapper.viewMessage();
 	}
+	public String delMsg(int mno) {
+		
+		return blogMapper.delMsg(mno);
+	}
 
 }

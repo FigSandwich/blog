@@ -14,4 +14,6 @@ public interface BlogMapper {
 
 	List<BlogVO> viewMessage();
 
+	String delMsg(int mno);
+
 }
