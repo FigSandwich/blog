@@ -2,7 +2,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Hello thymeleaf</title>
+<script type="text/javascript">
+	function test() {
+		var newDIV = document.createElement("div");
+
+		newDIV.setAttribute("id", "myDiv");
+		newDIV.style.backgroundColor = "yellow";
+
+		document.getElementById("rr").appendChild(newDIV);
+	}
+</script>
+
+
+
+<script th:if="${blogVo?.mno}">
+	function myFunction() {
+		document.getElementById("d1").innerHTML = '#blogVo.mno'
+		document.getElementById("d2").innerHTML = '#blogVo.name';
+		document.getElementById("d3").innerHTML = '3';
+		document.getElementById("d4").innerHTML = '4';
+		document.getElementById("d5").innerHTML = '5';
+			
+	}
+</script>
+
+
 </head>
+
+
+
+
 <body>
 	<h1>Hello thymeleaf</h1>
 	<!-- 
@@ -21,34 +50,61 @@
 	</h3>
 	
 	 -->
-	
-	
-	<table>
-                <thead>
-                <tr>
-                <th>MNO</th>
-                  <th>NAME</th>
-                  <th>PW</th>
-                  <th>PHONE</th>
-                  <th>MESSAGE</th>
-                </tr>
-                </thead>
-                <tbody>
-              		<tr th:each="blogVo : ${list}">
-              		<td th:text="${blogVo.mno}">MNO</td>
-	                  <td th:text="${blogVo.name}">NAME</td>
-	                  <td th:text="${blogVo.pw}">PW</td>
-	                  <td th:text="${blogVo.phone}">PHONE</td>
-	                  <td th:text="${blogVo.message}">MESSAGE</td>
-	                  <td> <a th:href="'/delete/'+${blogVo.mno}">삭제</a></td>
-	                 
 
-	                  
-	                </tr>
-                </tbody>
-                
-                
-                <!--  <tbody>
+
+	<table>
+		<thead>
+			<tr>
+				<th>MNO</th>
+				<th>NAME</th>
+				<th>PW</th>
+				<th>PHONE</th>
+				<th>MESSAGE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="blogVo : ${list}">
+				<td th:text="${blogVo.mno}">MNO</td>
+				<td th:text="${blogVo.name}">NAME</td>
+				<td th:text="${blogVo.pw}">PW</td>
+				<td th:text="${blogVo.phone}">PHONE</td>
+				<td th:text="${blogVo.message}">MESSAGE</td>
+				<td>
+
+
+					<button th:onclick="'myFunction('+${blogVo.mno}+')'">Click me</button>
+
+				</td>
+				<td><a th:href="'/delete/'+${blogVo.mno}">삭제</a></td>
+
+
+
+			</tr>
+
+			<tr>
+				<td>
+					<p id="d1"></p>
+				</td>
+				<td>
+					<p id="d2"></p>
+				</td>
+				<td>
+					<p id="d3"></p>
+				</td>
+				<td>
+					<p id="d4"></p>
+				</td>
+				<td>
+					<p id="d5"></p>
+				</td>
+				<td>
+					<p id="d6"></p>
+				</td>
+			</tr>
+		</tbody>
+
+
+		<!--  <tbody>
               		<tr th:each="blogVO : ${list}">
 	                  <td th:text="${boardVO.bno}">BNO</td>
 	                  <td><a th:href="@{/samplehome/board/read(bno=${boardVO.bno})}" th:text="${boardVO.title}">TITLE</a></td>
@@ -57,11 +113,11 @@
 	                  <td th:text="${boardVO.viewcnt}">VIEWCNT</td>
 	                </tr>
                 </tbody> -->
-               
-              </table>
-	
-	
-	
+
+	</table>
+
+
+
 </body>
 </html>
 
