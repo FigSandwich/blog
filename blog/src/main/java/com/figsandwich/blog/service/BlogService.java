@@ -30,5 +30,9 @@ public class BlogService {
 		
 		return blogMapper.delMsg(mno);
 	}
+	public List<BlogVO> msgDetail(int mno) {
+		// TODO Auto-generated method stub
+		return blogMapper.msgDetail(mno);
+	}
 
 }

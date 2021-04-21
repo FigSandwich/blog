@@ -718,17 +718,15 @@
 												<th>NAME</th>
 
 												<th>PHONE</th>
-												<th>MESSAGE</th>
-												<th>DELETE</th>
+
 											</tr>
 										</thead>
 										<tbody>
 											<tr th:each="blogVo : ${list}">
-												<td th:text="${blogVo.name}">NAME</td>
+												<td><a th:href="'/msg/'+${blogVo.mno}"th:text="${blogVo.name}"> ></a></td>
 
 												<td th:text="${blogVo.phone}">PHONE</td>
-												<td th:text="${blogVo.message}">MESSAGE</td>
-												<td><a th:href="'/delete/'+${blogVo.mno}">삭제</a></td>
+
 
 
 											</tr>

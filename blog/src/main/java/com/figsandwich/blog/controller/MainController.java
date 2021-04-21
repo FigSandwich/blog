@@ -65,9 +65,16 @@ public class MainController {
 	public String deletePage(HttpServletRequest request,
 			@PathVariable(name = "mno", required = true) int mno){		
 		blogService.delMsg(mno);
+		//return "thymeleaf/index";
 		return "redirect:/";
 	}
 	
+	@GetMapping("/msg/{mno}")
+	public String msgDetail(HttpServletRequest request,
+			@PathVariable(name = "mno", required = true) int mno,Model model){		
+		model.addAttribute("msg", blogService.msgDetail(mno));
+		return "thymeleaf/msg";
+	}
 	
 	
 	/*

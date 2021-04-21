@@ -20,6 +20,14 @@
 	<select id="delMsg" parameterType="int">
 		DELETE FROM TB_MESSAGE WHERE MNO=#{MNO}
 	</select>
+	
+	<select id="msgDetail" parameterType="int" resultType="BlogVO">
+		SELECT MNO,NAME,PHONE,MESSAGE
+		FROM TB_MESSAGE
+		WHERE MNO=#{MNO}
+	
+	</select>
+
 
 
 
