@@ -1,0 +1,24 @@
+#Port
+server.port=8080
+
+# MariaDB Connection Setting
+spring.datasource.driverClassName= org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://127.0.0.1:3306/blog 
+spring.datasource.username=blog
+spring.datasource.password=asd123
+
+# MyBatis Setting
+mybatis.type-aliases-package: com.figsandwich.blog.dto
+mybatis.mapper-locations: mybatis/*.xml
+mybatis.configuration.map-underscore-to-camel-case=true
+
+#thymeleaff
+#spring.thymeleaf.view-names=thymeleaf/* 
+#spring.thymeleaf.prefix=classpath:/templates/ 
+spring.thymeleaf.suffix=.html
+
+
+
+spring.thymeleaf.cache=false 
+spring.thymeleaf.check-template-location=true
+

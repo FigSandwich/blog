@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.figsandwich.blog.mapper.BlogMapper">
+
+	<select id="writeMsg" parameterType="Map">
+
+		INSERT INTO TB_MESSAGE (NAME,PW,PHONE,MESSAGE,DATE)
+		<!-- VALUES('park','1234','1234','123asdzxc',NOW()) -->
+		VALUES(#{NAME},#{PW},#{PHONE},#{MESSAGE},NOW())
+	</select>
+
+	<select id="viewMessage" resultType="BlogVO">
+	SELECT NAME,PHONE,MESSAGE 
+	FROM TB_MESSAGE
+	</select>
+
+
+
+</mapper>
